@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+
+<html class="abc"><head>
+    <title>Assignment 1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="javascripts/style.css">
+    <script type="text/javascript" src="assignment.js"></script>
+</head>
+<body>
+    <h1>Shaik Imtiyaz Aaresh</h1>
+    <h2>1001832769</h2>
+    <table>
+
+        <tbody>
+            <tr>
+            <td>
+                    <h1 id="message">Search</h1>
+            </td>
+            <td>
+                    <label> Name to show picture:
+                        <input id="name" placeholder="Enter Name" name="name" type="text" >
+                        <button onclick="search('name')">Search by Name</button>
+                    </label>
+                    <br>
+                    <label> Salary to show pictures: 
+                        <input id="salary" placeholder="Enter Salary" name="salary_max" type="text">
+                        <button onclick="search_sal('salary','salary_less')">less than salary</button>
+                        <button onclick="search_sal('salary','salary_max')">greater than salary</button>
+                    </label>
+                    
+                    <br>
+                    <label> Telnum to show pictures: 
+                        <input id="telnum" placeholder="Enter Telephone Number" name="telnum" type="text"> 
+                        <button onclick="search('telnum')">Search by phone number</button>
+                    </label>
+                    <br>
+                    <label> Room to show pictures: 
+                        <input id="room" placeholder="Enter Room No" name="room" type="text">
+                        <button onclick="search('room')">Search by room number</button>
+                    </label>
+                    <br>
+                    <label> Name to delete: 
+                        <input id="name_del" placeholder="Enter Name" name="room" type="text">
+                        <button onclick="searchdel('name_del')">delete name</button>
+                    </label>
+                    <br>
+                    <label> Photo of name to replace: 
+                        <input id="name_rep" placeholder="Enter Name" name="room" type="text">
+                        <input id="image_rep" placeholder="Enter Photo Name in jpg" name="room" type="text">
+                        <button onclick="replacephoto('name_rep','image_rep')">replace photo</button>
+                    </label>
+                    <br>
+                    <label> Keyword of name to replace: 
+                        <input id="name_key" placeholder="Enter Name" name="room" type="text">
+                        <input id="keyword_key" placeholder="Enter keyword to replace" name="room" type="text">
+                        <button onclick="replacekeyword('name_key','keyword_key')">replace Keyword</button>
+                    </label>
+                    <br>
+                    <label> Name to show keyword:
+                        <input id="name_show_key" placeholder="Enter Name" name="name" type="text" >
+                        <button onclick="searchnamekey('name_show_key')">Search by Name</button>
+                    </label>
+                    
+                    <br>
+                    <br>
+                                
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="myData">  </div>
+    <div>
+    </div>
+</body>
+</html>

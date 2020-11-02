@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="assignment.js"></script>
+</head>
+<body>
+  <img src="c.png" style="width:200px;height:200px;">
+<div class="header">
+  <h1>Shaik Imtiyaz Aaresh</h1>
+  <p>Student ID 1001832769</p>
+</div>
+
+<div class="content">
+  <h2 class="pl-12">Search data console</h2>
+
+Question-6: 
+<div class="content">
+  <div class="mb-10">
+    <label>Enter Value</label>
+    Enter any number: <input type="text" id="name" placeholder="Enter Vaalue No" name="name">
+     <button type="button" onclick="ValueSearch('name')">Search odd or even</button>
+  </div>
+</br>
+
+Question-7:
+  <div class="mb-10">
+    <h4>Search data for range of rooms : </h4>
+    <form name="r_form" action="/assignment" onsubmit="return room_range()" method="post">
+    ENter Room number 1 <input id="r_id1" placeholder="Enter room Number" type="text" name="r1_name" required>
+    Enter Room number 2: <input id="r_id2" placeholder="Enter room Number" type="text" name="r2_name" required>
+    <input type="submit" value="Search name">
+    </form>
+  </div>
+</br>
+</div>
+
+Question-8:
+
+<div class="mb-10">
+  <h4>Enter name and id:  </h4>
+  <form name="nc_form" action="/assignment" onsubmit="return name_change_id()" method="post">
+  ENter name <input id="name" placeholder="Enter name" type="text" name="n_name" required>
+  Enter id: <input id="id" placeholder="Enter id Number" type="text" name="id_name" required>
+  <input type="submit" value="Search name">
+  </form>
+</div>
+</br>
+</div>
+
+<div class="mb-10">
+  <h4>Enter picture and room:  </h4>
+  <form name="p_form" action="/assignment" onsubmit="return name_pic_change_id()" method="post">
+  ENter picture name: <input id="picture" placeholder="Enter picture" type="text" name="p_name" required>
+  Enter Room: <input id="room" placeholder="Enter room" type="text" name="r_name" required>
+  <input type="submit" value="Search name">
+  </form>
+</div>
+</br>
+</div>
+
+<div id="evenodd">  </div>
+  
+  <table style="width:100%">
+    <td>
+  <div id="myData">  </div>
+    </td>
+</table>
+<div id="output_div">  </div>
+</div>
+
+</body>
+</html>

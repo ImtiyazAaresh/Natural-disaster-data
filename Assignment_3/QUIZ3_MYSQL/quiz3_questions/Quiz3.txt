@@ -1,0 +1,323 @@
+
+Name: Shaik Imtiyaz Aaresh
+Last 4 digits ID:2769
+
+CSE 6331, Cloud Computing					
+
+
+Quiz Q3, 8.10, Summer 2020   (c) DL, UTA, 2020
+
+
+  C&P means cut and paste only those relevant lines from your program(s) into this quiz.
+
+
+ 1.  I understand that I am on my honor during this quiz, I will not collaborate, use 
+     non-allowed sources, and I will not discuss or share this quiz with anyone for the next 
+     12 hours.
+     You MAY: use Google to search, use previous source code, 
+     YOU MAY NOT use:
+     Email, Facebook, Hangouts, IM, chats, Skype or ANY other human connection.
+
+     This is a timed test. Late tests will have points deducted for being late.
+     Very late tests will not be graded.
+
+     When you are complete, with any part, please send the link, raise your hand, so we may visually inspect that part.
+
+     The second part of the test, you should electronically submit, you will need to copy and paste 
+     only those lines of code to implement that part of the test, usually a few (two to eight) lines of code. 
+     Place it immediately after the question.
+
+     Submit this Quiz (renamed) with code cut and pasted, ONLY text. DO NOT submit zips, binaries, libraries,
+     or anything other than text.
+
+     When any parts(questions) are complete complete, submit this test, you may make multiple submissions.
+
+     If you have computer, or other, problems, please raise your hand immediately.
+
+     If you understand and agree, please initial here:
+     _________________
+
+ 2. Get files from this same folder.
+   
+ 3. Name your program/submission with your name and last digits of your ID.
+
+ 4a. Using the cloud services provider, all functionality possible should be implemented on that provider.
+     (Of course, displaying web pages through a browser and the user interface is "local")
+
+ 4b. Upload all data files (*jpg and *csv, not this quiz) to cloud service. 
+  
+Show and submit code, when each part is complete, raise your hand and then show us:
+
+ To recieve credit you MUST show (demo) AND submit the code (text only) on Canvas.
+
+ 5. Show a web page and interface (which resides on the cloud provider) with your student ID,
+    and below that your name, last name first, then first name.
+    For all questions after this one, please show on the top of each page. 
+    Please use a large font.
+    The cloud service provider is either MS Azure or IBM Cloud (BlueMix).
+
+ 6. Import the datasets into a Relational Data Base (SQL), if you have already done this, (briefly) explain/describe
+    how you did this. Please note that for some parts of the following you will need to create indexes (keys)
+    appropriately.
+
+ 7. Allow a user, through a web form, to give a country code and you will list all of the terrorist incidents (ti) in that
+    country by year, number of incidents, and the full name of the country.
+    Please show the time to do this query.
+
+              <div class="mb-10">
+                <h4>No of rows to retrive (DATA FROM DB & CACHE) : </h4>
+                <form name="retrive_form" action="/assignment" onsubmit="return retrive_fun('retrive_no')" method="post">
+                Enter country code : <input id="retrive_no" placeholder="No of rows to retrive" type="text" name="retrive_name" required>
+                <input type="submit" value="Search data">
+                </form>
+              </div>
+            </br>
+
+Router.post("/retrive_redis", (req,res)=>{
+    var val = req.body.Value;
+    var newobj = {};
+    const starttime = Date.now();
+    var sql=`select year,NumberTerroristIncidents,Entity from ti where code='${val}' order by year asc;`;
+    const call=new Request(sql,(err,rowCount,rows)=>{
+        if (err) {
+        console.error(err.message);
+        }else{
+         
+        console.log(`${rowCount} row(s) returned`);
+        console.log(rows);
+        newobj["timeTaken"] = (Date.now() - starttime);
+        rows.push(newobj);
+        res.json(rows);
+        }
+        });
+         
+        conn.execSql(call);
+});
+function retrive_fun() {
+  var num = document.forms["retrive_form"]["retrive_no"].value;
+  if (num == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  else{
+    fetch('/profile/retrive_redis', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({Value: num}),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      retrive_display(data);
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    }); 
+    return false;
+  }
+}
+//GIVE no of time and get time
+function retrive_display(data) {
+  document.getElementById("myData").innerHTML = "";
+  var mainContainer = document.getElementById("myData");
+  //added to display time taken
+  var div = document.createElement("div");
+  div.style.padding = '20px';
+  div.innerHTML = "Time taken is " + data[data.length-1].timeTaken + " ms";
+  mainContainer.appendChild(div)
+  // added to display time taken
+  for (var i = 0; i < data.length-1; i++) {
+    var div = document.createElement("div");
+    div.style.padding = '20px';
+         div.innerHTML =  "Year is " + data[i].year.value + "  ;No of incidents is " + data[i].NumberTerroristIncidents.value+ "  ;Place is " + data[i].Entity.value;
+    mainContainer.appendChild(div);
+  }
+}
+
+function lat_lat_fun() {
+  var lat1 = document.forms["lat_lat_form"]["loc1_lan"].value;
+  var lat2 = document.forms["lat_lat_form"]["loc2_lan"].value;
+  if (lat1 == "" || lat2== "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  else{
+    fetch('/profile/lat1_lat2_data', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({Latitude1: lat1,Latitude2: lat2}),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      lat_lat_display(data);
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    }); 
+    return false;
+  }
+}
+
+//display keywords for names and creating div
+function lat_lat_display(data) {
+  document.getElementById("myData").innerHTML = "";
+  var mainContainer = document.getElementById("myData");
+  //added to display time taken
+  var div = document.createElement("div");
+  div.style.padding = '20px';
+  div.innerHTML = "Time taken is " + data[data.length-1].timeTaken + " ms";
+  mainContainer.appendChild(div)
+  // added to display time taken
+  for (var i = 0; i < data.length-1; i++) {
+    var div = document.createElement("div");
+    div.style.padding = '20px';
+         div.innerHTML =  "Year is " + data[i].year.value + "  ;No of incidents is " + data[i].NumberTerroristIncidents.value+ "  ;Place is " + data[i].Entity.value;
+    mainContainer.appendChild(div);
+  }
+}
+
+
+-----done
+ 8. Allow a user, through a web form, to give a range of years, and you will list all of the terrorist incidents in 
+    all countries by year, number of incidents, and the full name of each country.
+    Please show the time to do this query.
+          
+            <div class="mb-10">
+              <h4>Please provide range of years : </h4>
+              <form name="lat_lat_form" action="/assignment" onsubmit="return lat_lat_fun('loc1_lan','loc2_lan')" method="post">
+              Year 1: <input id="loc1_lan" placeholder="Enter Latitude 1" type="text" name="lat_loc1" required>
+              Year 2: <input id="loc2_lan" placeholder="Enter Latitude 2" type="text" name="lat_loc2" required>
+              <!-- Enter Range: <input id="range_high_loc" placeholder="Enter Range" type="text" name="range_loc" required> -->
+              <input type="submit" value="Search data">
+              </form>
+            </div>
+          </br>
+
+Router.post("/lat1_lat2_data", (req,res)=>{
+    var lat1 = req.body.Latitude1;
+    var lat2 = req.body.Latitude2;
+    var newobj = {};
+    const starttime = Date.now();
+    var sql = `Select Entity,year,NumberTerroristIncidents from ti where year between ${lat1} and ${lat2}`;
+const call=new Request(sql,(err,rowCount,rows)=>{
+if (err) {
+console.error(err.message);
+}else{
+ 
+console.log(`${rowCount} row(s) returned`);
+console.log(rows);
+newobj["timeTaken"] = (Date.now() - starttime);
+rows.push(newobj);
+res.json(rows);
+}
+});
+ 
+conn.execSql(call);
+});
+
+function p1_p2_fun() {
+  var lat1 = document.forms["p1_p2_form"]["p1_data"].value;
+  var lat2 = document.forms["p1_p2_form"]["p2_data"].value;
+  if (lat1 == "" || lat2== "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  else{
+    fetch('/profile/p1_p2_data', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({Latitude1: lat1,Latitude2: lat2}),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      p1_p2_dis(data);
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    }); 
+    return false;
+  }
+}
+
+//display keywords for names and creating div
+function p1_p2_dis(data) {
+  document.getElementById("myData").innerHTML = "";
+  var mainContainer = document.getElementById("myData");
+  //added to display time taken
+  var div = document.createElement("div");
+  div.style.padding = '20px';
+  div.innerHTML = "Time taken is " + data[data.length-1].timeTaken + " ms";
+  mainContainer.appendChild(div)
+  // added to display time taken
+  for (var i = 0; i < data.length-1; i++) {
+    var div = document.createElement("div");
+    div.style.padding = '20px';
+         div.innerHTML =  "Count is " + data[i].count.value + "  ;Entity is " + data[i].Entity.value;
+    mainContainer.appendChild(div);
+  }
+}
+
+	
+---done
+ 9. Allow a user, through a web form, to give a range of percent smokers (sp), and you will count all of the terrorist 
+    incidents in all countries, within that range of smokers. Please show the names of all countries that have any incidents,
+    within that percent range.
+    Please show the time to do this query.
+
+
+          <!-- <GIVE Latitude 1 and latitude 2 DETAILS> -->
+            <div class="mb-10">
+              <h4>Please enter data : </h4>
+              <form name="p1_p2_form" action="/assignment" onsubmit="return p1_p2_fun('p1','p2')" method="post">
+              percentage 1: <input id="p1_data" placeholder="Enter Latitude 1" type="text" name="p1_n" required>
+              Percentage 2: <input id="p2_data" placeholder="Enter Latitude 2" type="text" name="p2_n" required>
+              <!-- Enter Range: <input id="range_high_loc" placeholder="Enter Range" type="text" name="range_loc" required> -->
+              <input type="submit" value="Search data">
+              </form>
+            </div>
+          </br>
+
+Router.post("/p1_p2_data", (req,res)=>{
+    var lat1 = req.body.Latitude1;
+    var lat2 = req.body.Latitude2;
+    var newobj = {};
+    const starttime = Date.now();
+    // var sql = `Select Entity,year,NumberTerroristIncidents from ti where year between ${lat1} and ${lat2}`;
+    var sql= `select distinct count(b.NumberTerroristIncidents),b.Entity from sp a,ti b where prevalence between '10.4' and '10.6' and a.code=b.code and a.Entity=b.Entity  group by b.entity,b.NumberTerroristIncidents`;
+const call=new Request(sql,(err,rowCount,rows)=>{
+if (err) {
+console.error(err.message);
+}else{
+ 
+console.log(`${rowCount} row(s) returned`);
+console.log(rows);
+newobj["timeTaken"] = (Date.now() - starttime);
+rows.push(newobj);
+res.json(rows);
+}
+});
+ 
+conn.execSql(call);
+});
+
+
+
+ 10. A user will give you the number of times to do the "query", you will do the previous steps 8. and 9. that number of times 
+     and show the results as well as the total time taken. 
+
+ 11. Repeat 10. using an in-memory caching mechanism (NOT an in-memory database) repeat the previous step, then show us.
+
+ 12a. Show us, in a link, the application running and we will try it out. Only for parts 7, 8, 9, 10, 11
+
+ 12b. When complete, return (send) this quiz
+     If you finish early, send this immediately, otherwise send between
+     the end of class and no more than 1 minute after that.
+

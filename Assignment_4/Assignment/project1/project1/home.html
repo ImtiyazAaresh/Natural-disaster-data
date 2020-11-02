@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- installed d3 -->
+<!-- <script src="d3.min.js"></script> -->
+<!-- using highcharts for pie chart -->
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src = "https://code.highcharts.com/highcharts.js"></script> 
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="assignment.js"></script>
+<!-- <script src="https://d3js.org/d3.v4.js"></script> -->
+
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>1001832769</h1>
+    <h1>Shaik, Imtiyaz Aaresh</h1>
+    <h2>MS Azure</h2>
+    <!-- <h2>Student ID 1001832769</h2> -->
+  </div>
+ 
+  <!-- <img src="s.jpg" style="width:200px;height:200px;"> -->
+
+<div class="mb-10">
+    <h4>Scatter view : </h4>
+    <form name="scatterForm" action="/assignment.js" onsubmit="return example_scatter()" method="post">
+    Enter values : <input id="scatIdFir" value=1980 placeholder="Country abbrivation" type="text" name="scatNameFir" required>
+    Enter values : <input id="scatIdSec" value=2012 placeholder="Country abbrivation" type="text" name="scatNameSec" required>
+    <button type="submit" value="Search data">click me for scatter</button>
+    </form>
+  </div>
+</br>
+
+<!-- <button type="button" onclick="example_scatter()">click me for scatter</button> -->
+
+<div class="mb-10">
+  <h4>Bar view : </h4>
+  <form name="barForm" action="/assignment.js" onsubmit="return example_bar()" method="post">
+  Enter values : <input id="barIdFir" value=1980 placeholder="Country abbrivation" type="text" name="barNameFir" required>
+  Enter values : <input id="barIdSec" value=2012 placeholder="Country abbrivation" type="text" name="barNameSec" required>
+  <button type="submit" value="Search data">click me for bars</button>
+  </form>
+</div>
+</br>
+
+<div class="mb-10">
+  <h4>Bar Multiple view : </h4>
+  <form name="barmulForm" action="/assignment.js" onsubmit="return example_bar_multiple()" method="post">
+  Enter values : <input id="barmulIdFir" value=2001 placeholder="Country abbrivation" type="text" name="barmulNameFir" required>
+  Enter values : <input id="barmulIdSec" value=2005 placeholder="Country abbrivation" type="text" name="barmulNameSec" required>
+  <button type="submit" value="Search data">click me for bars</button>
+  </form>
+</div>
+</br>
+
+<div class="mb-10">
+  <h4>Hist view : </h4>
+  <form name="histForm" action="/assignment.js" onsubmit="return example_hist()" method="post">
+  Enter values : <input id="histIdFir" value=2001 placeholder="Country abbrivation" type="text" name="histNameFir" required>
+  Enter values : <input id="histIdSec" value=2005 placeholder="Country abbrivation" type="text" name="histNameSec" required>
+  <button type="submit" value="Search data">click me for hist</button>
+  </form>
+</div>
+</br>
+
+
+<div class="mb-10">
+  <h4>Pie view : </h4>
+  <form name="pieForm" action="/assignment.js" onsubmit="return example_pie()" method="post">
+  Enter values : <input id="pieIdFir" value =1980 placeholder="Country abbrivation" type="text" name="pieNameFir" required>
+  Enter values : <input id="pieIdSec" value =2012 placeholder="Country abbrivation" type="text" name="pieNameSec" required>
+  <button type="submit" value="Search data">click me for pie</button>
+  </form>
+</div>
+</br>
+
+<!-- <button type="button" onclick="example_pie()">click me for PIE</button> -->
+
+<div class="mb-10">
+  <h4>Table view : </h4>
+  <form name="tableForm" action="/assignment.js" onsubmit="return example_table()" method="post">
+  Enter values : <input id="tableIdFir" placeholder="Country abbrivation" value =2000 type="text" name="tableNameFir" required>
+  Enter values : <input id="tableIdSec" placeholder="Country abbrivation" value =2  type="text" name="tableNameSec" required>
+  <button type="submit" value="Search data"  onclick="example_table('tableIdFir')">click me for table</button>
+  </form>
+</div>
+</br>
+
+<!-- <button type="button" onclick="example_table()">click me for table</button> -->
+
+
+<table style="width:100%">
+</table>
+<div id="output_div">  </div>
+</div>
+
+<div id = "container" style = "width: 550px; height: 400px; margin: 0 auto"></div>
+</body>
+</html>

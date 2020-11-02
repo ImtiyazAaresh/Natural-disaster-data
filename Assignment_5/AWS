@@ -1,0 +1,12 @@
+install node in AWS:
+https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html
+
+
+
+run this in Body Data
+add HTTP header Manager in jmeter 
+
+Run as below:
+{
+	"Value":"AFG"
+}

@@ -1,0 +1,34 @@
+redis pass : IDJlIpi5VhmHl9kQ6MMVlMpycs1Q8Nui
+
+cf login -a https://api.ng.bluemix.net
+
+cf push imtiyazaareshassignment2 –m 128M
+
+cf stop quiz2imtiyazaaresh
+
+1 degree = 111 KM
+
+testingaaresh.mybluemix.net
+
+//query to convert
+https://www.distancesfrom.com/us/61n-150w-latitude-longitude-61n-150w-latitude-61n-150w-longitude/LatLongHistory/2392609.aspx
+
+1)//for range
+SELECT count(*), range FROM  (select t.*, (case
+                                          when t.mag between 0 and 1  then 'a'
+                                           when t.mag between 1 and 2 then 'b'
+                                           when t.mag between 2 and 3 then 'c'
+                                           when t.mag between 3 and 4 then 'd'
+                                           when t.mag between 4 and 5 then 'e'
+                                           when t.mag between 5 and 6 then 'f'
+                                           when t.mag between 6 and 7 then 'g'
+                                      end) as range from earth t where VARCHAR_FORMAT(time,'YYYY-MM-DD') >VARCHAR_FORMAT(sysdate-2,'YYYY-MM-DD'))
+group by range;
+
+2) //location
+SELECT id,latitude,longitude,(6371*acos(cos(radians(32.729641))* cos(radians(latitude))* cos(radians(longitude) - radians(-97.110566))+ sin(radians(32.729641))*sin(radians(latitude)))) AS distance FROM earth where (6371*acos(cos(radians(32.729641))* cos(radians(latitude))* cos(radians(longitude) - radians(-97.110566))+ sin(radians(32.729641))*sin(radians(latitude)))) < 500 Order by MAG desc;
+
+3)
+Select * from MCP95677.EARTH where type='earthquake' order by mag desc limit ${value}
+4)
+select * from earth where mag<${mag} and VARCHAR_FORMAT(time,'YYYY-MM-DD') between '${dat1}' and '${dat2}'

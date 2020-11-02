@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="assignment.js"></script>
+</head>
+<body>
+
+<div class="header">
+  <h1>Shaik Imtiyaz Aaresh</h1>
+  <p>Student ID 1001832769</p>
+</div>
+
+<div class="content">
+  <h2 class="pl-12">Search data console</h2>
+  
+<!-- <GIVES LARGEST N QUAKES--PASS N> -->
+      <div class="mb-10">
+        <h4>Largest EarthQuakes occured : </h4>
+        <form name="max_mag" action="/assignment" onsubmit="return maxnumber('maxnum')" method="post">
+        Enter number of earthquakes to display: <input id="maxnum" placeholder="Enter Number" type="text" name="name" required>
+        <input type="submit" value="Search name">
+        </form>
+      </div>
+    </br>
+<!-- <GIVES COORDINATES AND RANGE IN KM--GIVES EARTHQUAKES IN THAT RANGE > -->
+      <div class="mb-10">
+        <h4>Earthquakes in the range of given coordinates : </h4>
+        <form name="dis_lat_long" action="/assignment" onsubmit="return range_lat_long('lat_num','long_num','range_num')" method="post">
+        Enter Latitude: <input id="lat_num" placeholder="Enter Latitude" type="text" name="lat_inp" required>
+        Enter Longitude: <input id="long_num" placeholder="Enter Longitude" type="text" name="long_inp" required>
+        Enter Range: <input id="range_num" placeholder="Enter Range" type="text" name="range_n" required>
+        <input type="submit" value="Search range">
+        </form>
+      </div>
+    </br>
+<!-- <GIVE DATES AND MAG--SHOWS DATA BETWEEN THAT DATES > -->
+      <div class="mb-10">
+        <h4>EarthQuakes between the entered dates and less than given magnitude : </h4>
+        <form name="mag_for_dates" action="/assignment" onsubmit="return date_cal_mag('dat1','dat2','dat_mag')" method="post">
+        Enter Start date: <input id="dat1" placeholder="Enter Start date" type="date" name="inp_dat1" required>
+        Enter End date: <input id="dat2" placeholder="Enter End date" type="date" name="inp_dat2" required>
+        Enter mag: <input id="dat_mag" placeholder="Enter Magnitude" type="text" name="dat_mag_name" required>
+        <input type="submit" value="Search range">
+        </form>
+      </div>
+    </br>
+      <!-- <GIVE DAYS AND DISPLAYS COUNT OF MAGS > -->
+        <div class="mb-10">
+          <h4>Count of earthquakes occured in recent given days  : </h4>
+          <form name="count_of_mags" action="/assignment" onsubmit="return count_mag_fun('count_mag')" method="post">
+          Enter Number of days: <input id="count_mag" placeholder="Enter Number of days" type="text" name="count_mag" required>
+          <input type="submit" value="Search range">
+          </form>
+        </div>
+      </br>
+        <!-- <GIVE LOCATIOIN 1 and LOCATION 2 DETAILS AND RANGE> -->
+      <div class="mb-10">
+        <h4>Count of earthquakes in given locations less than given range : </h4>
+        <form name="high_form_loc" action="/assignment" onsubmit="return high_loc1_loc2('loc1_lan','loc1_lon','loc2_lan','loc2_lon','range_high_loc')" method="post">
+        Enter Location 1 Latitude: <input id="loc1_lan" placeholder="Enter Latitude for Location 1" type="text" name="lat_loc1" required>
+        Enter Location 1 Longitude: <input id="loc1_lon" placeholder="Enter Longitude fro Location 2" type="text" name="long_loc1" required></br>
+        Enter Location 2 Latitude: <input id="loc2_lan" placeholder="Enter LatitudeLocation 2" type="text" name="lat_loc2" required>
+        Enter Location 2 Longitude: <input id="loc2_lon" placeholder="Enter Longitude Location 2" type="text" name="long_loc2" required></br>
+        Enter Range: <input id="range_high_loc" placeholder="Enter Range" type="text" name="range_loc" required>
+        <input type="submit" value="Search range">
+        </form>
+      </div>
+    </br>
+      <!-- <GIVES COORDINATES AND RANGE IN KM--GIVES MAX MAG OF EARTHQUAKE > -->
+        <div class="mb-10">
+          <h4>Largest EarthQuakes occured : </h4>
+          <form name="max_mag_lat_lon" action="/assignment" onsubmit="return get_lat_lon_max('lat_max_mag','long_max_mag','range_max_mag')" method="post">
+          Enter Latitude: <input id="lat_max_mag" placeholder="Enter Latitude" type="text" name="lat_inp_max_mag" required>
+          Enter Longitude: <input id="long_max_mag" placeholder="Enter Longitude" type="text" name="long_inp_max_mag" required>
+          Enter Range: <input id="range_max_mag" placeholder="Enter Range" type="text" name="range_name_1" required>
+          <input type="submit" value="Search range">
+          </form>
+        </div>
+
+      
+  <table style="width:100%">
+    <td>
+  <div id="myData">  </div>
+    </td>
+</table>
+<div id="output_div">  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+imtiyazaaresh.shaik@mavs.uta.edu
+Yasmin1@3
+ 
+ download "npm i ibm_db" for IBM dependencies
+ 
+ --goto project folder and run below
+cf login -a https://api.ng.bluemix.net
+
+--pushing app to IBM cloud
+cf push numbertestaaresh –m 128M
+
+--stopping app
+cf stop testingaaresh
+
+////////Connection to local db////////////////////////////
+const mysql = require("mysql");
+var mysqlConnection = mysql.createConnection({
+    host : "localhost",
+    user : "root",
+    password :"",
+    database : "db",
+    multipleStatements: true,
+});
+
+mysqlConnection.connect((err)=>{
+    if(!err)
+        {
+        console.log("Connected");
+ 
+        }
+    else
+        {
+        console.log("Connection Failed",err);
+        }
+
+
+});
+
+module.exports = mysqlConnection;
+
+
+////////Connection to IBM DB////////////////////////////
+const mysql = require("mysql");
+var mysqlConnection = mysql.createConnection({
+    DATABASE:"BLUDB",
+    HOSTNAME:"dashdb-txn-sbox-yp-dal09-10.services.dal.bluemix.net",
+    PORT:50001,
+    PROTOCOL:"TCPIP",
+    UID:"tjr83076",
+    PWD:"ncbkn-slzcvk5v68",
+    Security:"SSL",
+    multipleStatements: true,
+});
+
+mysqlConnection.connect((err)=>{
+    if(!err)
+        {
+        console.log("Connected"); 
+        }
+    else
+        {
+        console.log("Connection Failed",err);
+        }
+});
+
+module.exports = mysqlConnection;
+
+0 2 15:57:57 CREATE PROCEDURE calculateDistance @RADIUS INT=0, @LAT VARCHAR(10)='', @LONG VARCHAR(10)='', @GEO1 GEOGRAPHY = NULL, AS BEGIN SET @geo1= geography::Point(@LAT, @LONG, 4326) SELECT TOP 10 LOC_ID,LOC_NAME,LEFT(CONVERT(VARCHAR,_ (@geo1.STDistance(geography::Point(ISNULL(LAT,0), _ ISNULL(LONG,0), 4326)))/1000),5)+' Km' as DISTANCE from LOCATION_MASTER WHERE (@geo1.STDistance(geography::Point(ISNULL(LAT,0), _ ISNULL(LONG,0), 4326)))/1000 < @RADIUS END GO 

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Assignment 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="style.css">
+<script type="text/javascript" src="assignment.js"></script>
+</head>
+<body>
+
+  <div class="header">
+    <h1>1001832769</h1>
+    <h1>Shaik, Imtiyaz Aaresh</h1>
+    <h2>MS Azure</h2>
+    <!-- <h2>Student ID 1001832769</h2> -->
+  </div>
+  <!-- <img src="s.jpg" style="width:200px;height:200px;"> -->
+<div class="content">
+  <h2 class="pl-12">Search</h2>
+
+<!-- 77777777777777777777777777777777777777777 -->
+              <div class="mb-10">
+                <h4>Enter country abbrivation : </h4>
+                <form name="retrive_form" action="/assignment" onsubmit="return retrive_fun('retrive_no')" method="post">
+                Enter country code : <input id="retrive_no" placeholder="Country abbrivation" type="text" name="retrive_name" required>
+                <input type="submit" value="Search data">
+                </form>
+              </div>
+            </br>
+
+          <!-- <88888888888888888888888888888888888888888888888888> -->
+            <h4>8th question </h4>
+            <div class="mb-10">
+              <h4>Please provide range of years : </h4>
+              <form name="lat_lat_form" action="/assignment" onsubmit="return lat_lat_fun('loc1_lan','loc2_lan')" method="post">
+              Year 1: <input id="loc1_lan" placeholder="Enter Year 1" type="text" name="lat_loc1" required>
+              Year 2: <input id="loc2_lan" placeholder="Enter Year 2" type="text" name="lat_loc2" required>
+              <!-- Enter Range: <input id="range_high_loc" placeholder="Enter Range" type="text" name="range_loc" required> -->
+              <input type="submit" value="Search data">
+              </form>
+            </div>
+          </br>
+
+          <!-- <9999999999999999999999999999999999999999999999> -->
+
+            <h4>9th question </h4>
+            <div class="mb-10">
+              <h4>Please enter data : </h4>
+              <form name="p1_p2_form" action="/assignment" onsubmit="return p1_p2_fun('p1','p2')" method="post">
+              percentage 1: <input id="p1_data" placeholder="Enter Percentage 1" type="text" name="p1_n" required>
+              Percentage 2: <input id="p2_data" placeholder="Enter Percentage 2" type="text" name="p2_n" required>
+              <!-- Enter Range: <input id="range_high_loc" placeholder="Enter Range" type="text" name="range_loc" required> -->
+              <input type="submit" value="Search data">
+              </form>
+            </div>
+          </br>
+<!-- 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10  -->
+          
+<h4>10th question </h4>
+<div class="mb-10">
+            <h4>Provide years details to run n times : </h4>
+            <form name="lat_lat_db_form" action="/assignment" onsubmit="return lat_lat_db_fun('db_lan_1','db_lan_2','no_of_times_db')" method="post">
+            Enter Year 1: <input id="db_lan_1" placeholder="Enter Year 1" type="text" name="dbloc1_1" required>
+            Enter Year 2: <input id="db_lan_2" placeholder="Enter Year 2" type="text" name="dbloc2_2" required>
+            No of times: <input id="no_of_times_db" placeholder="Enter " type="text" name="range_loc_1" required>
+            <input type="submit" value="Search data">
+            </form>
+          </div>
+        </br>
+
+        <div class="mb-10">
+          <h4>Provide percentage details to run n times : </h4>
+          <form name="per_db_form" action="/assignment" onsubmit="return per_db_fun('per1','per2','per_no_db')" method="post">
+          Enter Percentage 1: <input id="per1" placeholder="Enter % 1" type="text" name="per1_n" required>
+          Enter Percentage 2: <input id="per2" placeholder="Enter % 2" type="text" name="per2_n" required>
+          No of times: <input id="per_no_db" placeholder="Enter " type="text" name="range_loc_1" required>
+          <input type="submit" value="Search data">
+          </form>
+        </div>
+      </br>
+
+      <!-- 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11  -->
+
+      <h4>11 th question </h4>
+      <div class="mb-10">
+        <h4>Provide years details to run n times(cache implementation) : </h4>
+        <form name="lat_lat_db_formc" action="/assignment" onsubmit="return lat_lat_db_func('db_lan_1c','db_lan_2c','no_of_times_dbc')" method="post">
+        Enter Year 1: <input id="db_lan_1c" placeholder="Enter Year 1" type="text" name="dbloc1_1c" required>
+        Enter Year 2: <input id="db_lan_2c" placeholder="Enter Year 2" type="text" name="dbloc2_2c" required>
+        No of times: <input id="no_of_times_dbc" placeholder="Enter " type="text" name="range_loc_1c" required>
+        <input type="submit" value="Search data">
+        </form>
+      </div>
+    </br>
+
+    <div class="mb-10">
+      <h4>Provide percentage details to run n times(cache implementation) : </h4>
+      <form name="per_db_formc" action="/assignment" onsubmit="return per_db_func('per1c','per2c','per_no_dbc')" method="post">
+      Enter Percentage 1: <input id="per1c" placeholder="Enter % 1" type="text" name="per1_nc" required>
+      Enter Percentage 2: <input id="per2c" placeholder="Enter % 2" type="text" name="per2_nc" required>
+      No of times: <input id="per_no_dbc" placeholder="Enter " type="text" name="range_loc_1c" required>
+      <input type="submit" value="Search data">
+      </form>
+    </div>
+  </br>
+      
+  <table style="width:100%">
+    <td>
+  <div id="myData">  </div>
+    </td>
+</table>
+</div>
+
+</body>
+</html>
